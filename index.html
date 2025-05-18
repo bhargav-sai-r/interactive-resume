@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +7,19 @@
     <title>Bhargav Sai Racharla - Interactive Resume</title>
     <style>
         :root {
-            --primary-color: #007AFF; /* Apple Blue */
-            --secondary-color: #f2f2f7; /* Light Gray BG */
-            --text-color: #1c1c1e; /* Dark Gray Text */
+            --primary-color: #007AFF; 
+            --secondary-color: #f2f2f7; 
+            --text-color: #1c1c1e; 
             --border-color: #d1d1d6;
             --whatsapp-green: #25D366;
-            --call-gold: #FFCC00; /* Golden color for Call button */
+            --call-gold: #FFCC00; 
+            --email-color: #5856D6; 
             --rating-bg-highlight: #e9e9ed; 
+
+            --purplle-bg: #e6e0f8; 
+            --npci-bg: #ffe0cc;    
+            --wipro-bg: #d4eaf7;   
+
             --font-sans-apple: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
@@ -42,7 +49,7 @@
         }
 
         .header h1 {
-            margin: 0 0 10px 0; /* Adjusted margin */
+            margin: 0 0 10px 0; 
             font-size: 2em;
             font-weight: 600;
             color: var(--text-color);
@@ -77,6 +84,12 @@
         .contact-info-top .btn-call:hover {
             background-color: #e6b800; 
         }
+         .contact-info-top .btn-email {
+            background-color: var(--email-color);
+        }
+        .contact-info-top .btn-email:hover {
+            background-color: #403dbf; 
+        }
         .contact-info-top .btn-primary {
             background-color: var(--primary-color);
         }
@@ -102,25 +115,27 @@
             margin-bottom: 25px;
         }
 
-        .resume-section h2 {
+        .resume-section h2 { 
             font-size: 1.4em;
             font-weight: 600;
             color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 5px;
             margin-bottom: 15px;
+            text-transform: uppercase; 
         }
-        .resume-section h3 {
-            font-size: 1.1em;
+        .resume-section h3 { 
+            font-size: 1.1em; 
             font-weight: 600;
-            margin-top: 15px;
-            margin-bottom: 5px;
+            margin-top: 15px; 
+            margin-bottom: 0px;
+            color: var(--text-color);
         }
-        .resume-section .sub-heading {
-            font-size: 0.9em;
-            color: #555;
+        .resume-section .job-title-dates { 
+            font-size: 0.95em; 
+            color: #555; 
             margin-bottom: 10px;
-            font-style: italic;
+            font-style: italic; 
         }
         
         .professional-summary-block {
@@ -129,11 +144,16 @@
             margin-bottom: 10px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
+            font-size: 0.95em; 
+            text-align: left; 
+        }
+
+        .education-item { 
+            margin-bottom: 5px; 
             font-size: 0.95em;
         }
 
         .achievement-item {
-            background-color: #ffffff;
             padding: 12px;
             margin-bottom: 10px;
             border-radius: 8px;
@@ -141,11 +161,14 @@
             display: flex;
             flex-direction: column; 
             gap: 10px;
+            font-size: 0.95em; 
         }
+        .achievement-item.purplle-item { background-color: var(--purplle-bg); }
+        .achievement-item.npci-item { background-color: var(--npci-bg); }
+        .achievement-item.wipro-item { background-color: var(--wipro-bg); }
         
         .achievement-text {
             flex-grow: 1;
-            font-size: 0.95em;
         }
 
         .rating-control {
@@ -154,7 +177,7 @@
             gap: 8px;
             flex-shrink: 0;
             padding: 8px;
-            background-color: var(--rating-bg-highlight);
+            background-color: var(--rating-bg-highlight); 
             border-radius: 6px;
         }
         .rating-control label {
@@ -172,27 +195,39 @@
             min-width: 70px;
         }
 
-        .skills-list, .interests-list {
-            padding-left: 20px;
-            list-style: disc;
+        .skills-section-item { 
+            margin-bottom: 8px; 
+            font-size: 0.95em;
         }
-        .skills-list li, .interests-list li {
-            margin-bottom: 5px;
+        .skills-section-item strong { 
+            font-weight: 600;
+            color: var(--text-color);
         }
 
         .languages-inline {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-around; 
             padding: 8px 0;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 10px; 
+            font-size: 0.95em;
         }
         .language-item {
-            background-color: #fff;
+            background-color: #fff; 
             padding: 6px 12px;
             border-radius: 15px;
             font-size: 0.9em;
             border: 1px solid var(--border-color);
+        }
+
+        .interests-text { 
+            font-size: 0.95em;
+            padding-left: 0;
+            list-style: disc; 
+            margin-left: 20px; 
+        }
+         .interests-text li {
+            margin-bottom: 3px;
         }
 
         .score-summary {
@@ -259,108 +294,117 @@
 
     <div class="resume-container">
         <header class="header">
-            <!-- Logos section removed -->
             <h1>Bhargav Sai Racharla</h1>
+            <!-- Email text removed from here -->
             <div class="contact-info-top">
                 <a href="tel:+918019467055" class="btn btn-call">☎ Call</a>
+                <a href="mailto:bhargavsai12345@gmail.com" class="btn btn-email">✉ Email</a>
                 <a href="https://linkedin.com/in/bhargav-sai-racharla/" target="_blank" class="btn btn-primary">LinkedIn</a>
                 <a href="https://wa.me/918019467055?text=Hi%20Bhargav,%20I%20saw%20your%20interactive%20resume." target="_blank" class="btn btn-whatsapp">WhatsApp</a>
             </div>
         </header>
 
         <section class="resume-section">
-            <h2>Professional Summary</h2>
+            <h2>PROFESSIONAL SUMMARY</h2>
             <div class="professional-summary-block">
-                <p>Product Manager (~4 yrs 8 mos) with a passion for creating elegant and impactful user experiences in e-commerce logistics & fintech. At Purplle, <strong>achieved a 400% increase in Same-Day Delivery</strong> through innovative platform enhancements and carrier integrations. Defined product vision for core systems (Carrier Recommendation, EDD Engine). Proven in simplifying complexity and delivering high-quality, scalable solutions. MBA from IIM Indore.</p>
+                <p>Product Manager (~4 yrs 8 mos) delivering high-impact e-commerce logistics & fintech solutions. Drove 400% Same-Day Delivery growth at Purplle through platform innovations. Defined product strategy for core systems, excelling in data-driven decisions, scaling platforms & enhancing user experience. MBA from IIM Indore.</p>
             </div>
         </section>
 
         <section class="resume-section">
-            <h2>Educational Qualifications</h2>
-            <p><strong>Indian Institute of Management Indore</strong> | Master of Business Administration (MBA) | 2020</p>
-            <p><strong>Jawaharlal Nehru Technological University Hyderabad</strong> | B.Tech, Mechanical Engineering | 2018</p>
+            <h2>EDUCATIONAL QUALIFICATIONS</h2>
+            <p class="education-item"><strong>Indian Institute of Management, Indore</strong> | MBA | 2020</p>
+            <p class="education-item"><strong>Jawaharlal Nehru Technological University, Hyderabad</strong> | B.Tech (Mech) | 2018</p>
         </section>
 
         <section class="resume-section">
-            <h2>Work Experience</h2>
+            <h2>WORK EXPERIENCE</h2>
             
-            <h3>Purplle <span class="sub-heading">| Product Manager, Logistics Technology | July 2024 – Present</span></h3>
-            <div class="achievement-item">
-                <p class="achievement-text">Enhanced UX with a 400% Same-Day Delivery growth (2.2%→8.6%) via seamless integration of 7+ quick commerce carriers, impacting 1.85M+ shipments.</p>
+            <h3>Purplle.com</h3>
+            <p class="job-title-dates">Product Manager, Logistics Technology | Mumbai | July 2024 – Present</p>
+            <div class="achievement-item purplle-item">
+                <p class="achievement-text">Drove <strong>400% Same-Day Delivery</strong> growth (2.2%→8.6%) by leading integration of 7+ quick commerce carriers, impacting 1.85M+ shipments & significantly enhancing user experience.</p>
                 <div class="rating-control"><label for="rating_p1">Rate:</label><select class="rating-select" id="rating_p1" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
             </div>
-            <div class="achievement-item">
-                <p class="achievement-text">Cut Customer Promise Time breach 63% (1.78%→0.65%) by meticulously refining system logic & enhancing operational workflows for 9M+ orders, improving delivery reliability.</p>
+            <div class="achievement-item purplle-item">
+                <p class="achievement-text">Reduced Customer Promise Time breach by <strong>63%</strong> (1.78%→0.65%) for 9M+ annual orders through proactive system enhancements & optimized logistics workflows based on root cause analysis.</p>
                 <div class="rating-control"><label for="rating_p2">Rate:</label><select class="rating-select" id="rating_p2" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
             </div>
-            <div class="achievement-item">
-                <p class="achievement-text">Led design & migration of 20+ legacy panels to 15 intuitive Sentinel panels, focusing on UI simplicity, performance, scalability, & robust Role-Based Access Control.</p>
+            <div class="achievement-item purplle-item">
+                <p class="achievement-text">Owned migration of 20+ legacy panels to 15 new Sentinel platform panels, improving UI responsiveness, system scalability, & implementing robust Role-Based Access Control (RBAC).</p>
                 <div class="rating-control"><label for="rating_p3">Rate:</label><select class="rating-select" id="rating_p3" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
             </div>
-            <div class="achievement-item">
-                <p class="achievement-text">Strengthened data privacy for 100% B2C shipments by re-engineering carrier APIs to remove SKU-level data, ensuring security without compromising operational integrity.</p>
+            <div class="achievement-item purplle-item">
+                <p class="achievement-text">Enhanced data security for <strong>100% B2C shipments</strong> by re-engineering carrier APIs to remove SKU-level data, mitigating critical data breach risks without operational disruption.</p>
                 <div class="rating-control"><label for="rating_p4">Rate:</label><select class="rating-select" id="rating_p4" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
             </div>
-            <div class="achievement-item">
-                <p class="achievement-text">Crafted product vision & PRDs for innovative platforms: Carrier Recommendation, EDD Engine V2, B2B Automation & Demand Cluster systems, driving future logistics capabilities.</p>
+            <div class="achievement-item purplle-item">
+                <p class="achievement-text">Defined product strategy & authored PRDs for pivotal platforms: Carrier Recommendation, EDD Engine V2, B2B Automation, & Demand Cluster Optimization, driving future logistics capabilities.</p>
                 <div class="rating-control"><label for="rating_p5">Rate:</label><select class="rating-select" id="rating_p5" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
             </div>
-             <div class="achievement-item">
-                <p class="achievement-text">Pioneered Phase 1 B2B shipment tracking via Clickpost for 25% volume, now architecting a refined end-to-end API solution for superior supply chain visibility.</p>
+             <div class="achievement-item purplle-item">
+                <p class="achievement-text">Launched Phase 1 B2B shipment tracking via Clickpost for 25% volume; now architecting the end-to-end API solution for comprehensive supply chain visibility.</p>
                 <div class="rating-control"><label for="rating_p6">Rate:</label><select class="rating-select" id="rating_p6" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
             </div>
 
 
             <h3>National Payments Corporation of India (NPCI)</h3>
-            <p class="sub-heading">Lead Product Management, RuPay Ecommerce | Mumbai | July 2023 – April 2024</p>
-            <div class="achievement-item">
-                <p class="achievement-text">Drove RuPay E-commerce tokenization to <strong>92% domestically</strong> via RBI & Fintech collaborations, focusing on user data protection & secure transactions.</p>
+            <p class="job-title-dates">Lead Product Management, RuPay Ecommerce | Mumbai | July 2023 – April 2024</p>
+            <div class="achievement-item npci-item">
+                <p class="achievement-text">Led RuPay E-commerce tokenization to <strong>92% domestic adoption</strong> through strategic RBI & Fintech collaborations, enhancing security for millions of users nationwide.</p>
                 <div class="rating-control"><label for="rating_n1">Rate:</label><select class="rating-select" id="rating_n1" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
             </div>
-            <div class="achievement-item">
-                <p class="achievement-text">Streamlined Bank Identification Number allocation & mapping, enhancing operational elegance & efficiency of the RuPay payments network for member banks.</p>
+            <div class="achievement-item npci-item">
+                <p class="achievement-text">Simplified Bank Identification Number (BIN) allocation for member banks & partners, improving operational efficiency within the RuPay payments ecosystem.</p>
                 <div class="rating-control"><label for="rating_n2">Rate:</label><select class="rating-select" id="rating_n2" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
             </div>
             
-            <p class="sub-heading">Lead Business Transformation, Certifications | Hyderabad & Chennai | Sept 2021 – June 2023</p>
-            <div class="achievement-item">
-                <p class="achievement-text">Launched a user-focused NPCI Certifications portal, simplifying access to resources & enhancing partner engagement for smoother onboarding processes.</p>
+            <p class="job-title-dates">Lead Business Transformation | Hyderabad & Chennai | Sept 2021 – June 2023</p>
+            <div class="achievement-item npci-item">
+                <p class="achievement-text">Launched a dedicated Certifications partner portal, improving information access & streamlining the onboarding experience for National Payments Corporation of India ecosystem partners.</p>
                 <div class="rating-control"><label for="rating_n3">Rate:</label><select class="rating-select" id="rating_n3" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
             </div>
-             <div class="achievement-item">
-                <p class="achievement-text">Engineered automation of Level 2 RuPay card network certification, reducing manual effort & improving quality of partner onboarding.</p>
+             <div class="achievement-item npci-item">
+                <p class="achievement-text">Automated Level 2 RuPay card network certification operations, significantly reducing manual effort & accelerating partner onboarding turnaround time.</p>
                 <div class="rating-control"><label for="rating_n4">Rate:</label><select class="rating-select" id="rating_n4" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
             </div>
 
-            <h3>Wipro Limited <span class="sub-heading">| Pre-Sales Consultant, Cybersecurity | Hyderabad | Sept 2020 – Aug 2021</span></h3>
-             <div class="achievement-item">
-                <p class="achievement-text">Architected robust AWS & GCP cloud security solutions, contributing to pre-sales for enterprise engagements valued over <strong>$10 Million</strong>.</p>
+            <h3>Wipro Limited</h3>
+            <p class="job-title-dates">Pre-Sales Consultant, Cybersecurity | Hyderabad | Sept 2020 – Aug 2021</p>
+             <div class="achievement-item wipro-item">
+                <p class="achievement-text">Designed scalable Cloud security solutions (AWS, GCP), contributing to pre-sales proposals for enterprise deals collectively valued at over <strong>$10 Million</strong>.</p>
                 <div class="rating-control"><label for="rating_w1">Rate:</label><select class="rating-select" id="rating_w1" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
             </div>
         </section>
 
         <section class="resume-section">
-            <h2>Skills</h2>
-            <ul class="skills-list">
-                <li>Product Management: Product Vision & Strategy, User Experience (UX) Focus, Roadmapping, PRD/Specifications, Agile/Scrum, Go-to-Market, Stakeholder Collaboration, Data-Informed Decisions, Quality Assurance</li>
-                <li>Domains: E-commerce Logistics, Supply Chain Innovation, Fintech Platforms, Digital Payments, Design Thinking, Cybersecurity</li>
-                <li>Technical: API Design & Integration, System Architecture, SQL, Data Modeling, Platform Engineering Principles, Prompt engineering</li>
-                <li>Tools: JIRA, Clickpost, Metabase, LMS, MS Office, Chat GPT, gemini, Google AI Studio</li>
-            </ul>
+            <h2>SKILLS</h2>
+            <div class="skills-section-item">
+                <p><strong>Product Management:</strong> Product Strategy & Vision, Roadmapping, PRD/User Stories, A/B Testing, Go-to-Market, Stakeholder Management, User Research, Data Analysis & Insights, API & Platform Strategy.</p>
+            </div>
+            <div class="skills-section-item">
+                <p><strong>Domains:</strong> E-commerce Logistics, Quick Commerce, Supply Chain Management, Fintech, Digital Payments, Cloud Security.</p>
+            </div>
+            <div class="skills-section-item">
+                <p><strong>Technical:</strong> API Design & Integration, System Architecture (Conceptual), System Migration, SQL, Data Modeling, Cloud Platforms (AWS/GCP).</p>
+            </div>
+            <div class="skills-section-item">
+                <p><strong>Tools:</strong> JIRA, Clickpost, LMS, Metabase, MS Office, ChatGPT, AI Studio, Whimsical</p>
+            </div>
         </section>
 
         <section class="resume-section">
-            <h2>Languages</h2>
+            <h2>LANGUAGES</h2>
             <div class="languages-inline">
                 <span class="language-item">English (Fluent)</span>
-                <span class="language-item">Hindi (Fluent)</span>
+                <span class="language-item">Hindi (Native)</span> 
                 <span class="language-item">Telugu (Native)</span>
             </div>
         </section>
 
         <section class="resume-section">
-            <h2>Interests</h2>
-             <ul class="interests-list">
+            <h2>INTERESTS</h2>
+            <ul class="interests-text"> 
                 <li>Enthusiastic about playing Word Scrabble</li>
                 <li>Watching Anime</li>
                 <li>Practicing Contemporary Origami</li>
@@ -382,7 +426,7 @@
         </section>
 
         <section class="final-actions">
-            <a href="YOUR_RESUME_PDF_LINK_HERE.pdf" target="_blank" class="action-btn action-btn-primary">Download PDF Resume</a>
+            <a href="https://drive.google.com/file/d/1FE1mKWtztsqidFTi_uls2zdX8yCnUgIG/view?usp=sharing" target="_blank" class="action-btn action-btn-primary">Download PDF Resume</a>
             <a href="https://wa.me/918019467055?text=Hi%20Bhargav,%20I%20enjoyed%20your%20interactive%20resume%20and%20would%20like%20to%20connect." target="_blank" class="action-btn action-btn-whatsapp">Contact via WhatsApp</a>
         </section>
 
