@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,11 +13,15 @@
             --whatsapp-green: #25D366;
             --call-gold: #FFCC00; 
             --email-color: #5856D6; 
-            --rating-bg-highlight: #e9e9ed; 
-
+            
+            /* Background Colors for Experience */
             --purplle-bg: #e6e0f8; 
             --npci-bg: #ffe0cc;    
             --wipro-bg: #d4eaf7;   
+
+            /* Slider specific colors */
+            --slider-track-color: #c7c7cc;
+            --slider-thumb-color: var(--primary-color);
 
             --font-sans-apple: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
@@ -141,12 +144,20 @@
         .professional-summary-block {
             background-color: #ffffff;
             padding: 12px;
-            margin-bottom: 10px;
+            margin-bottom: 0; 
             border-radius: 8px;
             border: 1px solid var(--border-color);
             font-size: 0.95em; 
             text-align: left; 
         }
+         .instruction-text { 
+            font-style: italic;
+            font-size: 0.85em;
+            color: #555;
+            text-align: center;
+            margin: 10px 0 15px 0; 
+        }
+
 
         .education-item { 
             margin-bottom: 5px; 
@@ -171,29 +182,62 @@
             flex-grow: 1;
         }
 
-        .rating-control {
+        .relevance-slider-control {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 0;
+            flex-direction: column; 
+            align-items: flex-start; 
+            gap: 5px;
             padding: 8px;
-            background-color: var(--rating-bg-highlight); 
+            background-color: rgba(255,255,255,0.6); /* Lighter, more subtle than rating-bg-highlight */
             border-radius: 6px;
+            margin-top: 8px;
         }
-        .rating-control label {
-            font-size: 0.9em;
+
+        .slider-value-label {
+            font-size: 0.85em;
             font-weight: 500;
-            white-space: nowrap;
-        }
-        .rating-control select {
-            padding: 7px 10px;
-            border-radius: 5px;
-            border: 1px solid var(--border-color);
-            font-family: var(--font-sans-apple);
-            font-size: 0.95em;
+            color: var(--text-color);
+            padding: 3px 8px;
+            border-radius: 4px;
             background-color: #fff;
-            min-width: 70px;
+            border: 1px solid var(--border-color);
+            min-width: 100px; 
+            text-align: center;
         }
+
+        input[type="range"].relevance-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%; 
+            height: 8px;
+            background: var(--slider-track-color);
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.9;
+            transition: opacity .15s ease-in-out;
+            cursor: pointer;
+        }
+        input[type="range"].relevance-slider:hover {
+            opacity: 1;
+        }
+        input[type="range"].relevance-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--slider-thumb-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        input[type="range"].relevance-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--slider-thumb-color);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none; 
+        }
+
 
         .skills-section-item { 
             margin-bottom: 8px; 
@@ -230,42 +274,27 @@
             margin-bottom: 3px;
         }
 
-        .score-summary {
+        .score-summary { 
             margin-top: 30px;
             padding: 15px;
             background-color: #ffffff;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            text-align: center;
+            text-align: center; 
         }
-        .score-summary h3 {
+        .score-summary h3 { 
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 10px; 
             color: var(--primary-color);
         }
-        .score-display { 
-            display: flex;
-            justify-content: space-around; 
-            align-items: center;
-            flex-wrap: wrap; 
-            gap: 15px;
+        #relevanceVerdict { 
+            margin-top: 5px; 
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.05em; 
+            color: var(--text-color); 
         }
-        #totalScore {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: var(--text-color);
-            display: block; 
-        }
-         #averageScore {
-            font-size: 1.2em;
-            color: #555;
-             display: block; 
-        }
-        .score-label { 
-            font-size: 0.8em;
-            text-transform: uppercase;
-            color: #666;
-        }
+        
 
         .final-actions {
             margin-top: 20px;
@@ -282,6 +311,15 @@
                 justify-content: space-between;
                 align-items: center;
             }
+             .relevance-slider-control { 
+                flex-direction: row; 
+                align-items: center;
+                min-width: 220px; 
+            }
+            input[type="range"].relevance-slider {
+                width: auto; 
+                flex-grow: 1; 
+            }
             .final-actions {
                 flex-direction: row;
                 justify-content: center;
@@ -295,7 +333,6 @@
     <div class="resume-container">
         <header class="header">
             <h1>Bhargav Sai Racharla</h1>
-            <!-- Email text removed from here -->
             <div class="contact-info-top">
                 <a href="tel:+918019467055" class="btn btn-call">☎ Call</a>
                 <a href="mailto:bhargavsai12345@gmail.com" class="btn btn-email">✉ Email</a>
@@ -309,6 +346,7 @@
             <div class="professional-summary-block">
                 <p>Product Manager (~4 yrs 8 mos) delivering high-impact e-commerce logistics & fintech solutions. Drove 400% Same-Day Delivery growth at Purplle through platform innovations. Defined product strategy for core systems, excelling in data-driven decisions, scaling platforms & enhancing user experience. MBA from IIM Indore.</p>
             </div>
+            <p class="instruction-text">As you review the experiences below, please use the slider to indicate the relevance of each point to your requirements.</p>
         </section>
 
         <section class="resume-section">
@@ -324,56 +362,88 @@
             <p class="job-title-dates">Product Manager, Logistics Technology | Mumbai | July 2024 – Present</p>
             <div class="achievement-item purplle-item">
                 <p class="achievement-text">Drove <strong>400% Same-Day Delivery</strong> growth (2.2%→8.6%) by leading integration of 7+ quick commerce carriers, impacting 1.85M+ shipments & significantly enhancing user experience.</p>
-                <div class="rating-control"><label for="rating_p1">Rate:</label><select class="rating-select" id="rating_p1" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                <div class="relevance-slider-control">
+                    <label class="slider-value-label" id="label_slider_p1">Relevant</label>
+                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p1" oninput="updateSliderLabelAndSummary(this, 'label_slider_p1')">
+                </div>
             </div>
             <div class="achievement-item purplle-item">
                 <p class="achievement-text">Reduced Customer Promise Time breach by <strong>63%</strong> (1.78%→0.65%) for 9M+ annual orders through proactive system enhancements & optimized logistics workflows based on root cause analysis.</p>
-                <div class="rating-control"><label for="rating_p2">Rate:</label><select class="rating-select" id="rating_p2" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                 <div class="relevance-slider-control">
+                    <label class="slider-value-label" id="label_slider_p2">Relevant</label>
+                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p2" oninput="updateSliderLabelAndSummary(this, 'label_slider_p2')">
+                </div>
             </div>
             <div class="achievement-item purplle-item">
                 <p class="achievement-text">Owned migration of 20+ legacy panels to 15 new Sentinel platform panels, improving UI responsiveness, system scalability, & implementing robust Role-Based Access Control (RBAC).</p>
-                <div class="rating-control"><label for="rating_p3">Rate:</label><select class="rating-select" id="rating_p3" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                 <div class="relevance-slider-control">
+                    <label class="slider-value-label" id="label_slider_p3">Relevant</label>
+                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p3" oninput="updateSliderLabelAndSummary(this, 'label_slider_p3')">
+                </div>
             </div>
             <div class="achievement-item purplle-item">
                 <p class="achievement-text">Enhanced data security for <strong>100% B2C shipments</strong> by re-engineering carrier APIs to remove SKU-level data, mitigating critical data breach risks without operational disruption.</p>
-                <div class="rating-control"><label for="rating_p4">Rate:</label><select class="rating-select" id="rating_p4" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                 <div class="relevance-slider-control">
+                    <label class="slider-value-label" id="label_slider_p4">Relevant</label>
+                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p4" oninput="updateSliderLabelAndSummary(this, 'label_slider_p4')">
+                </div>
             </div>
             <div class="achievement-item purplle-item">
                 <p class="achievement-text">Defined product strategy & authored PRDs for pivotal platforms: Carrier Recommendation, EDD Engine V2, B2B Automation, & Demand Cluster Optimization, driving future logistics capabilities.</p>
-                <div class="rating-control"><label for="rating_p5">Rate:</label><select class="rating-select" id="rating_p5" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                 <div class="relevance-slider-control">
+                    <label class="slider-value-label" id="label_slider_p5">Relevant</label>
+                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p5" oninput="updateSliderLabelAndSummary(this, 'label_slider_p5')">
+                </div>
             </div>
              <div class="achievement-item purplle-item">
                 <p class="achievement-text">Launched Phase 1 B2B shipment tracking via Clickpost for 25% volume; now architecting the end-to-end API solution for comprehensive supply chain visibility.</p>
-                <div class="rating-control"><label for="rating_p6">Rate:</label><select class="rating-select" id="rating_p6" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                 <div class="relevance-slider-control">
+                    <label class="slider-value-label" id="label_slider_p6">Relevant</label>
+                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p6" oninput="updateSliderLabelAndSummary(this, 'label_slider_p6')">
+                </div>
             </div>
-
 
             <h3>National Payments Corporation of India (NPCI)</h3>
             <p class="job-title-dates">Lead Product Management, RuPay Ecommerce | Mumbai | July 2023 – April 2024</p>
             <div class="achievement-item npci-item">
                 <p class="achievement-text">Led RuPay E-commerce tokenization to <strong>92% domestic adoption</strong> through strategic RBI & Fintech collaborations, enhancing security for millions of users nationwide.</p>
-                <div class="rating-control"><label for="rating_n1">Rate:</label><select class="rating-select" id="rating_n1" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                 <div class="relevance-slider-control">
+                    <label class="slider-value-label" id="label_slider_n1">Relevant</label>
+                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_n1" oninput="updateSliderLabelAndSummary(this, 'label_slider_n1')">
+                </div>
             </div>
             <div class="achievement-item npci-item">
                 <p class="achievement-text">Simplified Bank Identification Number (BIN) allocation for member banks & partners, improving operational efficiency within the RuPay payments ecosystem.</p>
-                <div class="rating-control"><label for="rating_n2">Rate:</label><select class="rating-select" id="rating_n2" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                 <div class="relevance-slider-control">
+                    <label class="slider-value-label" id="label_slider_n2">Relevant</label>
+                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_n2" oninput="updateSliderLabelAndSummary(this, 'label_slider_n2')">
+                </div>
             </div>
             
             <p class="job-title-dates">Lead Business Transformation | Hyderabad & Chennai | Sept 2021 – June 2023</p>
             <div class="achievement-item npci-item">
                 <p class="achievement-text">Launched a dedicated Certifications partner portal, improving information access & streamlining the onboarding experience for National Payments Corporation of India ecosystem partners.</p>
-                <div class="rating-control"><label for="rating_n3">Rate:</label><select class="rating-select" id="rating_n3" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                 <div class="relevance-slider-control">
+                    <label class="slider-value-label" id="label_slider_n3">Relevant</label>
+                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_n3" oninput="updateSliderLabelAndSummary(this, 'label_slider_n3')">
+                </div>
             </div>
              <div class="achievement-item npci-item">
                 <p class="achievement-text">Automated Level 2 RuPay card network certification operations, significantly reducing manual effort & accelerating partner onboarding turnaround time.</p>
-                <div class="rating-control"><label for="rating_n4">Rate:</label><select class="rating-select" id="rating_n4" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                 <div class="relevance-slider-control">
+                    <label class="slider-value-label" id="label_slider_n4">Relevant</label>
+                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_n4" oninput="updateSliderLabelAndSummary(this, 'label_slider_n4')">
+                </div>
             </div>
 
             <h3>Wipro Limited</h3>
             <p class="job-title-dates">Pre-Sales Consultant, Cybersecurity | Hyderabad | Sept 2020 – Aug 2021</p>
              <div class="achievement-item wipro-item">
                 <p class="achievement-text">Designed scalable Cloud security solutions (AWS, GCP), contributing to pre-sales proposals for enterprise deals collectively valued at over <strong>$10 Million</strong>.</p>
-                <div class="rating-control"><label for="rating_w1">Rate:</label><select class="rating-select" id="rating_w1" onchange="updateScore()"><option value="0">N/A</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                <div class="relevance-slider-control">
+                    <label class="slider-value-label" id="label_slider_w1">Relevant</label>
+                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_w1" oninput="updateSliderLabelAndSummary(this, 'label_slider_w1')">
+                </div>
             </div>
         </section>
 
@@ -405,24 +475,15 @@
         <section class="resume-section">
             <h2>INTERESTS</h2>
             <ul class="interests-text"> 
-                <li>Enthusiastic about playing Word Scrabble</li>
-                <li>Watching Anime</li>
-                <li>Practicing Contemporary Origami</li>
+                <li>Enthusiastic about playing Word Scrabble.</li>
+                <li>Watching Anime.</li>
+                <li>Practicing Contemporary Origami.</li>
             </ul>
         </section>
 
         <section class="score-summary">
-            <h3>Your Evaluation Score</h3>
-            <div class="score-display">
-                <div id="totalScoreBlock">
-                    <span class="score-label">Total Score</span>
-                    <span id="totalScore">0</span>
-                </div>
-                <div id="averageScoreBlock">
-                    <span class="score-label">Average</span>
-                    <span id="averageScore">0 (0 items)</span>
-                </div>
-            </div>
+            <h3>Relevance Verdict</h3>
+            <p id="relevanceVerdict">Adjust the sliders above to assess relevance.</p> 
         </section>
 
         <section class="final-actions">
@@ -433,28 +494,73 @@
     </div>
 
     <script>
-        function updateScore() {
-            const selects = document.querySelectorAll('.rating-select');
-            let totalScore = 0;
-            let ratedItemsCount = 0;
-            selects.forEach(select => {
-                const value = parseInt(select.value);
-                if (value > 0) { 
-                    totalScore += value;
-                    ratedItemsCount++;
-                }
-            });
-            document.getElementById('totalScore').textContent = totalScore;
-            
-            let averageScoreText = "0 (0 items)";
-            if (ratedItemsCount > 0) {
-                const average = (totalScore / ratedItemsCount).toFixed(1);
-                averageScoreText = `${average} (${ratedItemsCount} items)`;
+        const relevanceLabels = {
+            1: "Interesting",
+            2: "Relevant",
+            3: "Highly Relevant"
+        };
+
+        function updateSliderLabelAndSummary(sliderElement, labelId) {
+            const labelElement = document.getElementById(labelId);
+            const value = parseInt(sliderElement.value);
+            if (labelElement) { // Check if labelElement exists
+                labelElement.textContent = relevanceLabels[value];
             }
-            document.getElementById('averageScore').textContent = averageScoreText;
+            // Mark as interacted for verdict logic
+            sliderElement.setAttribute('data-interacted', 'true');
+            updateRelevanceSummary(); 
         }
 
-        document.addEventListener('DOMContentLoaded', updateScore);
+        function updateRelevanceSummary() {
+            const sliders = document.querySelectorAll('.relevance-slider');
+            let counts = {
+                1: 0, // Interesting
+                2: 0, // Relevant
+                3: 0  // Highly Relevant
+            };
+            
+            let userHasInteracted = false;
+            sliders.forEach(slider => {
+                const value = parseInt(slider.value);
+                counts[value]++;
+                if (slider.getAttribute('data-interacted') === 'true') {
+                    userHasInteracted = true;
+                }
+            });
+
+            const verdictElement = document.getElementById('relevanceVerdict');
+            const relevantCount = counts[2];
+            const highlyRelevantCount = counts[3];
+            const relevantOrHighlyRelevantCount = relevantCount + highlyRelevantCount;
+
+            if (!userHasInteracted && sliders.length > 0) { 
+                 verdictElement.textContent = "Adjust the sliders above to assess relevance.";
+            } else if (highlyRelevantCount >= Math.ceil(sliders.length / 2) ) { // If half or more are highly relevant
+                verdictElement.textContent = "This profile shows strong relevance to your requirements. Let's discuss further!";
+            } else if (relevantOrHighlyRelevantCount >= Math.ceil(sliders.length * 0.4) ) { // If 40% or more are relevant/highly relevant
+                 verdictElement.textContent = "This profile shows good relevance. Worth exploring further.";
+            } else if (counts[1] > 0 && relevantOrHighlyRelevantCount < Math.ceil(sliders.length * 0.4) ) { 
+                verdictElement.textContent = "This seems to be an interesting profile. Consider discussing more to explore alignment.";
+            }
+             else { 
+                 verdictElement.textContent = "Thanks for reviewing! Feel free to reach out for more details.";
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const sliders = document.querySelectorAll('.relevance-slider');
+            sliders.forEach(slider => {
+                const labelId = 'label_' + slider.id;
+                const initialLabelElement = document.getElementById(labelId);
+                if(initialLabelElement) { 
+                    initialLabelElement.textContent = relevanceLabels[parseInt(slider.value)];
+                }
+                slider.addEventListener('input', function() {
+                    // updateSliderLabelAndSummary will be called by oninput, no need to call it twice here
+                });
+            });
+            updateRelevanceSummary(); 
+        });
     </script>
 
 </body>
