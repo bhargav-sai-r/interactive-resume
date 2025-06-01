@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +15,17 @@
             --call-gold: #FFCC00; 
             --email-color: #5856D6; 
             
-            /* Background Colors for Experience */
             --purplle-bg: #e6e0f8; 
             --npci-bg: #ffe0cc;    
             --wipro-bg: #d4eaf7;   
 
-            /* Slider specific colors */
-            --slider-track-color: #c7c7cc;
-            --slider-thumb-color: var(--primary-color);
+            --slicer-btn-bg: #fff;
+            --slicer-btn-border: var(--border-color);
+            --slicer-btn-text: var(--text-color);
+            --slicer-btn-selected-bg: var(--primary-color);
+            --slicer-btn-selected-text: #fff;
+            --slicer-btn-selected-border: var(--primary-color);
+
 
             --font-sans-apple: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
@@ -182,60 +186,33 @@
             flex-grow: 1;
         }
 
-        .relevance-slider-control {
+        .relevance-slicer-control {
             display: flex;
-            flex-direction: column; 
-            align-items: flex-start; 
-            gap: 5px;
-            padding: 8px;
-            background-color: rgba(255,255,255,0.6); /* Lighter, more subtle than rating-bg-highlight */
-            border-radius: 6px;
+            gap: 8px; 
             margin-top: 8px;
+            flex-wrap: wrap; 
         }
 
-        .slider-value-label {
-            font-size: 0.85em;
+        .relevance-slicer-control button {
+            flex-grow: 1; 
+            padding: 6px 10px;
+            font-size: 0.8em;
             font-weight: 500;
-            color: var(--text-color);
-            padding: 3px 8px;
-            border-radius: 4px;
-            background-color: #fff;
-            border: 1px solid var(--border-color);
-            min-width: 100px; 
+            border: 1px solid var(--slicer-btn-border);
+            background-color: var(--slicer-btn-bg);
+            color: var(--slicer-btn-text);
+            border-radius: 15px; 
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+            min-width: 80px; 
             text-align: center;
         }
 
-        input[type="range"].relevance-slider {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100%; 
-            height: 8px;
-            background: var(--slider-track-color);
-            border-radius: 5px;
-            outline: none;
-            opacity: 0.9;
-            transition: opacity .15s ease-in-out;
-            cursor: pointer;
-        }
-        input[type="range"].relevance-slider:hover {
-            opacity: 1;
-        }
-        input[type="range"].relevance-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: var(--slider-thumb-color);
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        input[type="range"].relevance-slider::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: var(--slider-thumb-color);
-            border-radius: 50%;
-            cursor: pointer;
-            border: none; 
+        .relevance-slicer-control button.selected {
+            background-color: var(--slicer-btn-selected-bg);
+            color: var(--slicer-btn-selected-text);
+            border-color: var(--slicer-btn-selected-border);
+            font-weight: 600;
         }
 
 
@@ -311,14 +288,12 @@
                 justify-content: space-between;
                 align-items: center;
             }
-             .relevance-slider-control { 
-                flex-direction: row; 
-                align-items: center;
-                min-width: 220px; 
+             .relevance-slicer-control { 
+                min-width: 250px; 
+                flex-wrap: nowrap; 
             }
-            input[type="range"].relevance-slider {
-                width: auto; 
-                flex-grow: 1; 
+            .relevance-slicer-control button {
+                 font-size: 0.85em;
             }
             .final-actions {
                 flex-direction: row;
@@ -344,9 +319,9 @@
         <section class="resume-section">
             <h2>PROFESSIONAL SUMMARY</h2>
             <div class="professional-summary-block">
-                <p>Product Manager (~4 yrs 8 mos) delivering high-impact e-commerce logistics & fintech solutions. Drove 400% Same-Day Delivery growth at Purplle through platform innovations. Defined product strategy for core systems, excelling in data-driven decisions, scaling platforms & enhancing user experience. MBA from IIM Indore.</p>
+                <p>Product Manager (~4 yrs 8 mos) delivering high-impact e-commerce logistics & fintech solutions, extensively leveraging AI for ideation, UI creation, and PRD generation. Drove 400% Same-Day Delivery growth at Purplle through platform innovations. Defined product strategy for core systems, excelling in data-driven decisions, scaling platforms & enhancing user experience. MBA from IIM Indore.</p>
             </div>
-            <p class="instruction-text">As you review the experiences below, please use the slider to indicate the relevance of each point to your requirements.</p>
+            <p class="instruction-text">Please click a relevance level for each experience point below.</p>
         </section>
 
         <section class="resume-section">
@@ -362,44 +337,50 @@
             <p class="job-title-dates">Product Manager, Logistics Technology | Mumbai | July 2024 – Present</p>
             <div class="achievement-item purplle-item">
                 <p class="achievement-text">Drove <strong>400% Same-Day Delivery</strong> growth (2.2%→8.6%) by leading integration of 7+ quick commerce carriers, impacting 1.85M+ shipments & significantly enhancing user experience.</p>
-                <div class="relevance-slider-control">
-                    <label class="slider-value-label" id="label_slider_p1">Relevant</label>
-                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p1" oninput="updateSliderLabelAndSummary(this, 'label_slider_p1')">
+                <div class="relevance-slicer-control" data-item-id="p1">
+                    <button data-value="1">Interesting</button>
+                    <button data-value="2" class="selected">Relevant</button>
+                    <button data-value="3">Highly Relevant</button>
                 </div>
             </div>
             <div class="achievement-item purplle-item">
                 <p class="achievement-text">Reduced Customer Promise Time breach by <strong>63%</strong> (1.78%→0.65%) for 9M+ annual orders through proactive system enhancements & optimized logistics workflows based on root cause analysis.</p>
-                 <div class="relevance-slider-control">
-                    <label class="slider-value-label" id="label_slider_p2">Relevant</label>
-                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p2" oninput="updateSliderLabelAndSummary(this, 'label_slider_p2')">
+                 <div class="relevance-slicer-control" data-item-id="p2">
+                    <button data-value="1">Interesting</button>
+                    <button data-value="2" class="selected">Relevant</button>
+                    <button data-value="3">Highly Relevant</button>
                 </div>
             </div>
             <div class="achievement-item purplle-item">
                 <p class="achievement-text">Owned migration of 20+ legacy panels to 15 new Sentinel platform panels, improving UI responsiveness, system scalability, & implementing robust Role-Based Access Control (RBAC).</p>
-                 <div class="relevance-slider-control">
-                    <label class="slider-value-label" id="label_slider_p3">Relevant</label>
-                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p3" oninput="updateSliderLabelAndSummary(this, 'label_slider_p3')">
+                 <div class="relevance-slicer-control" data-item-id="p3">
+                    <button data-value="1">Interesting</button>
+                    <button data-value="2" class="selected">Relevant</button>
+                    <button data-value="3">Highly Relevant</button>
                 </div>
             </div>
             <div class="achievement-item purplle-item">
                 <p class="achievement-text">Enhanced data security for <strong>100% B2C shipments</strong> by re-engineering carrier APIs to remove SKU-level data, mitigating critical data breach risks without operational disruption.</p>
-                 <div class="relevance-slider-control">
-                    <label class="slider-value-label" id="label_slider_p4">Relevant</label>
-                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p4" oninput="updateSliderLabelAndSummary(this, 'label_slider_p4')">
+                 <div class="relevance-slicer-control" data-item-id="p4">
+                    <button data-value="1">Interesting</button>
+                    <button data-value="2" class="selected">Relevant</button>
+                    <button data-value="3">Highly Relevant</button>
                 </div>
             </div>
             <div class="achievement-item purplle-item">
-                <p class="achievement-text">Defined product strategy & authored PRDs for pivotal platforms: Carrier Recommendation, EDD Engine V2, B2B Automation, & Demand Cluster Optimization, driving future logistics capabilities.</p>
-                 <div class="relevance-slider-control">
-                    <label class="slider-value-label" id="label_slider_p5">Relevant</label>
-                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p5" oninput="updateSliderLabelAndSummary(this, 'label_slider_p5')">
+                <p class="achievement-text">Defined AI-augmented product strategy & authored PRDs for pivotal platforms: Carrier Recommendation, EDD Engine, B2B Automation, & Slots Management System, leveraging AI for ideation, UI mockups, and enhanced logistics capabilities.</p>
+                 <div class="relevance-slicer-control" data-item-id="p5">
+                    <button data-value="1">Interesting</button>
+                    <button data-value="2" class="selected">Relevant</button>
+                    <button data-value="3">Highly Relevant</button>
                 </div>
             </div>
              <div class="achievement-item purplle-item">
                 <p class="achievement-text">Launched Phase 1 B2B shipment tracking via Clickpost for 25% volume; now architecting the end-to-end API solution for comprehensive supply chain visibility.</p>
-                 <div class="relevance-slider-control">
-                    <label class="slider-value-label" id="label_slider_p6">Relevant</label>
-                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_p6" oninput="updateSliderLabelAndSummary(this, 'label_slider_p6')">
+                 <div class="relevance-slicer-control" data-item-id="p6">
+                    <button data-value="1">Interesting</button>
+                    <button data-value="2" class="selected">Relevant</button>
+                    <button data-value="3">Highly Relevant</button>
                 </div>
             </div>
 
@@ -407,32 +388,36 @@
             <p class="job-title-dates">Lead Product Management, RuPay Ecommerce | Mumbai | July 2023 – April 2024</p>
             <div class="achievement-item npci-item">
                 <p class="achievement-text">Led RuPay E-commerce tokenization to <strong>92% domestic adoption</strong> through strategic RBI & Fintech collaborations, enhancing security for millions of users nationwide.</p>
-                 <div class="relevance-slider-control">
-                    <label class="slider-value-label" id="label_slider_n1">Relevant</label>
-                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_n1" oninput="updateSliderLabelAndSummary(this, 'label_slider_n1')">
+                 <div class="relevance-slicer-control" data-item-id="n1">
+                    <button data-value="1">Interesting</button>
+                    <button data-value="2" class="selected">Relevant</button>
+                    <button data-value="3">Highly Relevant</button>
                 </div>
             </div>
             <div class="achievement-item npci-item">
                 <p class="achievement-text">Simplified Bank Identification Number (BIN) allocation for member banks & partners, improving operational efficiency within the RuPay payments ecosystem.</p>
-                 <div class="relevance-slider-control">
-                    <label class="slider-value-label" id="label_slider_n2">Relevant</label>
-                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_n2" oninput="updateSliderLabelAndSummary(this, 'label_slider_n2')">
+                 <div class="relevance-slicer-control" data-item-id="n2">
+                    <button data-value="1">Interesting</button>
+                    <button data-value="2" class="selected">Relevant</button>
+                    <button data-value="3">Highly Relevant</button>
                 </div>
             </div>
             
             <p class="job-title-dates">Lead Business Transformation | Hyderabad & Chennai | Sept 2021 – June 2023</p>
             <div class="achievement-item npci-item">
                 <p class="achievement-text">Launched a dedicated Certifications partner portal, improving information access & streamlining the onboarding experience for National Payments Corporation of India ecosystem partners.</p>
-                 <div class="relevance-slider-control">
-                    <label class="slider-value-label" id="label_slider_n3">Relevant</label>
-                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_n3" oninput="updateSliderLabelAndSummary(this, 'label_slider_n3')">
+                 <div class="relevance-slicer-control" data-item-id="n3">
+                    <button data-value="1">Interesting</button>
+                    <button data-value="2" class="selected">Relevant</button>
+                    <button data-value="3">Highly Relevant</button>
                 </div>
             </div>
              <div class="achievement-item npci-item">
                 <p class="achievement-text">Automated Level 2 RuPay card network certification operations, significantly reducing manual effort & accelerating partner onboarding turnaround time.</p>
-                 <div class="relevance-slider-control">
-                    <label class="slider-value-label" id="label_slider_n4">Relevant</label>
-                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_n4" oninput="updateSliderLabelAndSummary(this, 'label_slider_n4')">
+                 <div class="relevance-slicer-control" data-item-id="n4">
+                    <button data-value="1">Interesting</button>
+                    <button data-value="2" class="selected">Relevant</button>
+                    <button data-value="3">Highly Relevant</button>
                 </div>
             </div>
 
@@ -440,9 +425,10 @@
             <p class="job-title-dates">Pre-Sales Consultant, Cybersecurity | Hyderabad | Sept 2020 – Aug 2021</p>
              <div class="achievement-item wipro-item">
                 <p class="achievement-text">Designed scalable Cloud security solutions (AWS, GCP), contributing to pre-sales proposals for enterprise deals collectively valued at over <strong>$10 Million</strong>.</p>
-                <div class="relevance-slider-control">
-                    <label class="slider-value-label" id="label_slider_w1">Relevant</label>
-                    <input type="range" min="1" max="3" value="2" class="relevance-slider" id="slider_w1" oninput="updateSliderLabelAndSummary(this, 'label_slider_w1')">
+                <div class="relevance-slicer-control" data-item-id="w1">
+                    <button data-value="1">Interesting</button>
+                    <button data-value="2" class="selected">Relevant</button>
+                    <button data-value="3">Highly Relevant</button>
                 </div>
             </div>
         </section>
@@ -483,47 +469,48 @@
 
         <section class="score-summary">
             <h3>Relevance Verdict</h3>
-            <p id="relevanceVerdict">Adjust the sliders above to assess relevance.</p> 
+            <p id="relevanceVerdict">Click a relevance level for the experiences above.</p> 
         </section>
 
         <section class="final-actions">
-            <a href="https://drive.google.com/file/d/1FE1mKWtztsqidFTi_uls2zdX8yCnUgIG/view?usp=sharing" target="_blank" class="action-btn action-btn-primary">Download PDF Resume</a>
+            <a href="https://drive.google.com/file/d/1u43veh2-60k2P8iUo4RfbTbKg6SVWLMB/view?usp=sharing" target="_blank" class="action-btn action-btn-primary">Download PDF Resume</a>
             <a href="https://wa.me/918019467055?text=Hi%20Bhargav,%20I%20enjoyed%20your%20interactive%20resume%20and%20would%20like%20to%20connect." target="_blank" class="action-btn action-btn-whatsapp">Contact via WhatsApp</a>
         </section>
 
     </div>
 
     <script>
-        const relevanceLabels = {
-            1: "Interesting",
-            2: "Relevant",
-            3: "Highly Relevant"
-        };
+        function handleSlicerClick(clickedButton, itemId) {
+            const buttonGroup = clickedButton.parentElement;
+            buttonGroup.querySelectorAll('button').forEach(button => {
+                button.classList.remove('selected');
+            });
 
-        function updateSliderLabelAndSummary(sliderElement, labelId) {
-            const labelElement = document.getElementById(labelId);
-            const value = parseInt(sliderElement.value);
-            if (labelElement) { // Check if labelElement exists
-                labelElement.textContent = relevanceLabels[value];
-            }
-            // Mark as interacted for verdict logic
-            sliderElement.setAttribute('data-interacted', 'true');
-            updateRelevanceSummary(); 
+            clickedButton.classList.add('selected');
+            
+            buttonGroup.setAttribute('data-selected-value', clickedButton.dataset.value);
+            buttonGroup.setAttribute('data-interacted', 'true'); 
+
+            updateRelevanceSummary();
         }
 
         function updateRelevanceSummary() {
-            const sliders = document.querySelectorAll('.relevance-slider');
+            const slicerControls = document.querySelectorAll('.relevance-slicer-control');
             let counts = {
-                1: 0, // Interesting
-                2: 0, // Relevant
-                3: 0  // Highly Relevant
+                1: 0, 
+                2: 0, 
+                3: 0  
             };
             
             let userHasInteracted = false;
-            sliders.forEach(slider => {
-                const value = parseInt(slider.value);
-                counts[value]++;
-                if (slider.getAttribute('data-interacted') === 'true') {
+
+            slicerControls.forEach(control => {
+                const selectedButton = control.querySelector('button.selected');
+                if (selectedButton) {
+                    const value = parseInt(selectedButton.dataset.value);
+                    counts[value]++;
+                }
+                if (control.getAttribute('data-interacted') === 'true') {
                     userHasInteracted = true;
                 }
             });
@@ -532,14 +519,15 @@
             const relevantCount = counts[2];
             const highlyRelevantCount = counts[3];
             const relevantOrHighlyRelevantCount = relevantCount + highlyRelevantCount;
+            const totalItems = slicerControls.length;
 
-            if (!userHasInteracted && sliders.length > 0) { 
-                 verdictElement.textContent = "Adjust the sliders above to assess relevance.";
-            } else if (highlyRelevantCount >= Math.ceil(sliders.length / 2) ) { // If half or more are highly relevant
+            if (!userHasInteracted && totalItems > 0) { 
+                 verdictElement.textContent = "Click a relevance level for the experiences above.";
+            } else if (highlyRelevantCount >= Math.ceil(totalItems / 2) ) { 
                 verdictElement.textContent = "This profile shows strong relevance to your requirements. Let's discuss further!";
-            } else if (relevantOrHighlyRelevantCount >= Math.ceil(sliders.length * 0.4) ) { // If 40% or more are relevant/highly relevant
+            } else if (relevantOrHighlyRelevantCount >= Math.ceil(totalItems * 0.4) ) { 
                  verdictElement.textContent = "This profile shows good relevance. Worth exploring further.";
-            } else if (counts[1] > 0 && relevantOrHighlyRelevantCount < Math.ceil(sliders.length * 0.4) ) { 
+            } else if (counts[1] > 0 && relevantOrHighlyRelevantCount < Math.ceil(totalItems * 0.4) ) { 
                 verdictElement.textContent = "This seems to be an interesting profile. Consider discussing more to explore alignment.";
             }
              else { 
@@ -548,16 +536,17 @@
         }
         
         document.addEventListener('DOMContentLoaded', () => {
-            const sliders = document.querySelectorAll('.relevance-slider');
-            sliders.forEach(slider => {
-                const labelId = 'label_' + slider.id;
-                const initialLabelElement = document.getElementById(labelId);
-                if(initialLabelElement) { 
-                    initialLabelElement.textContent = relevanceLabels[parseInt(slider.value)];
-                }
-                slider.addEventListener('input', function() {
-                    // updateSliderLabelAndSummary will be called by oninput, no need to call it twice here
+            const slicerControls = document.querySelectorAll('.relevance-slicer-control');
+            slicerControls.forEach(control => {
+                control.querySelectorAll('button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        handleSlicerClick(this, control.dataset.itemId);
+                    });
                 });
+                const initialSelectedButton = control.querySelector('button.selected');
+                if (initialSelectedButton) {
+                    control.setAttribute('data-selected-value', initialSelectedButton.dataset.value);
+                }
             });
             updateRelevanceSummary(); 
         });
